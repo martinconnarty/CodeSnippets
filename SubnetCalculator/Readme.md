@@ -2,4 +2,13 @@
 # Subnet Calculator
 
 
-These are 2 scripts that I've developed for subnet calculation. I struggled to find a simple script for this that I could include in another project so I'm knocked these up.
+This is a script I've produced after struggling to find a simple script to give me IP addresses.
+
+See it in action with demo.html, but if using it you can call the function with:
+
+To get an array of all the IP addresses:
+ipArray=getIPsFromCIDR(net,"addresses")
+
+To get a summary (network, broadcast):
+
+ipArray=getIPsFromCIDR(net,"highlights")
