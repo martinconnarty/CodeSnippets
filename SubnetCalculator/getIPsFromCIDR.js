@@ -3,14 +3,23 @@
 function getIPs(){
     
     let subnet = document.forms["myForm"]["subnet"].value; 
+    let type= document.forms["myForm"]["type"].value; 
     
        let ips=[];
        let ip="";
-       ips=getIPsFromCIDR(subnet);              
-       ips.forEach(resultsprint)
-       function resultsprint(ip) {
-                    document.getElementById('IPs').innerHTML += "<br/>"+ip;
+        if (type=='addresses'){
+           ips=getIPsFromCIDR(subnet,type);              
+           ips.forEach(resultsprint)
+           function resultsprint(ip) {
+                        document.getElementById('IPs').innerHTML += "<br/>"+ip;
+            }
         }
+       else if (type='highlights'){
+       
+           highlights=getIPsFromCIDR(subnet,type); 
+           
+             document.getElementById('IPs').innerHTML += "<br/>"+highlights;
+       }
  
 }
 
