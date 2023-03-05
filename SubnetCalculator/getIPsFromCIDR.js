@@ -16,7 +16,7 @@ function getIPs(){
 
 
 //getIPsFromCIDR will generate an array of IP addresss from a provided CIDR Range
-function getIPsFromCIDR(net) {
+function getIPsFromCIDR(net,type) {
       
                 let ipAddresses=[];
                 const regexp= /^(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\.(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\.(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\.(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\/(\d{1,2})$/;
@@ -102,5 +102,13 @@ function getIPsFromCIDR(net) {
                         }
                     }
                 }
-        return ipAddresses
+    
+        if type=="addresses"{
+            return ipAddresses
+        }
+        else if type=="highlights"{
+            return `IP=${net} First=${network} Second=${broadcast}`; 
+        }
+            
+    
 }
