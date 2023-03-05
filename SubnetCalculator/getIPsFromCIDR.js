@@ -1,5 +1,5 @@
 
-//Optional - if you are using in a form
+//Optional - if using in the demo form
 function getIPs(){
     
     let subnet = document.forms["myForm"]["subnet"].value; 
@@ -23,7 +23,8 @@ function getIPs(){
 }
 
 
-//getIPsFromCIDR will generate an array of IP addresss from a provided CIDR Range
+//getIPsFromCIDR will generate an array of IP addresss from a provided CIDR Range - call it with a type of "Addresses" and it will return an array
+
 function getIPsFromCIDR(net,type) {
      		console.log(type) 
                 let ipAddresses=[];
