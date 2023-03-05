@@ -1,1 +1,5 @@
 
+# Subnet Calculator
+
+
+These are 2 scripts that I've developed for subnet calculation. I struggled to find a simple script for this that I could include in another project so I'm knocked these up.
