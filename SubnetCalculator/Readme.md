@@ -2,7 +2,7 @@
 # Subnet Calculator
 
 
-This is a script I've produced after struggling to find a simple script to give me IP addresses.
+This is a script I've produced after struggling to find a simple script to give me IP addresses from a CIDR range
 
 See it in action with demo.html, but if using it you can call the function with:
 
