@@ -1,0 +1,52 @@
+<form version="1.1">
+  <label>PlaybookDashboard</label>
+  <fieldset submitButton="false">
+    <input type="text" token="RuleID">
+      <label>RuleID</label>
+    </input>
+    <input type="text" token="searchterm2">
+      <label>searchterm</label>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>|inputlookup RulePlaybooks where RuleName=$RuleID$</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <drilldown>
+          <set token="GuideAction">$row.Action$</set>
+          <set token="GuideText">$row.Guide$</set>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$GuideText$">
+      <html>
+      <h1>Identify</h1>
+      $GuideText$
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$GuideAction$">
+      <title>GuideAction=$GuideAction$ Searchterm2=$searchterm2$</title>
+      <table>
+        <search>
+          <query>index=_internal 
+| search 
+    [ makeresults 
+    | eval query=replace("$GuideAction$","searchterm","$searchterm2$") 
+    | return $query]</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>
