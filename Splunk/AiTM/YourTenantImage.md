@@ -1,11 +1,15 @@
-# Your Tenant Image
+# Adversary In the Middle Detection
+
+Adversary in the Middle is growing as a  Phishing threat, with its ability to steal MFA credentials it is fast becoming the only method to Phish. Here are a few ideas I've developed. As always this will change as I learn more.
+
+## Your Tenant Image
 
 Many of the Adversary in the Middle pages that I've observed utilise a feature which loads the background image of the victim's tenant. As defenders, given we have access to the right type of logs (Web proxy logs with URLs and Referrers) we can do some detections!
 
 An AiTM page will often pull in the image directly from authcdn (https://aadcdn.msauthimages.net/<thisisyourtenantid>/logintenantbranding/0/illustration?ts=<timestamp value>)
 
 
-# Use an overlay
+## Use an overlay
 
 I would first suggest you use an overlay on your background image - if you can get your users to check the URL every time they see a login page then it might stop a lot of these. Perhaps something like this:
 
@@ -18,7 +22,7 @@ This leads to something like:
 ![image](https://github.com/martinconnarty/CodeSnippets/assets/6506886/ce007057-5136-4204-8bb7-a507f22b67a8)
 
 
-# Looking for suspect referrers - for direct access
+## Looking for suspect referrers - for direct access
 
 If we look at the referrers in Web Proxy logs - we will often observe that they are usually legitimate, Microsoft pages such as https://login.microsoftonline.com/
 
@@ -28,7 +32,7 @@ If we see anything else, we should look into it.
 | tstats `summariesonly` count from datamodel=Web where Web.url="https://aadcdn.msauthimages.net/<thisisyourtenantid>/logintenantbranding/0/illustration?*" AND NOT Web.http_referrer IN ("login.microsoftonline.com/*") by Web.user Web.http_referrer
 ```
 
-# Look for suspect requests - where it's proxied
+## Look for suspect requests - where it's proxied
 
 In one example of an AiTM page, instead of the victim's browser reaching out directly to the image, the site visited it. However, we could see in the logs the same tenantid. This was unusual and something we could look for:
 
