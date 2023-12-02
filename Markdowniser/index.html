@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+
+<style>
+    #template {
+    background-color: rgb(220, 220, 220);
+    width: 350px;
+    height: 500px;
+    }
+    </style>
+<script>
+
+function myFunction() {
+ 
+  let templateinput = document.getElementById("template").value
+ 
+  const regexstring='#\{.*?\}#'
+  const regex= new RegExp(regexstring,'g')
+  let text=templateinput.replace(regex,"test")
+
+  document.getElementById("demo").innerHTML = text;
+  demo.innerHTML = demo.innerHTML.replace(/\n/g, '<br>\n');
+}
+</script>
+
+
+<body>
+
+<h2>Markdowniser</h2>
+
+<p>Please enter your markdown template</p>
+
+<textarea id="template"></textarea>
+<br/>
+
+<button type="button" onclick="myFunction()">Submit</button>
+<h2>Output Markdown</h2>
+<p id="demo"></p>
+
+
+
+</body>
+</html> 
