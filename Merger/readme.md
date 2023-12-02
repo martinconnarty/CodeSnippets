@@ -1,5 +1,7 @@
 # Merger
 
+# [martinconnarty.github.io](https://martinconnarty.github.io)
+
 Merger is designed to be a really simple way to help you build documents, such as helping with putting together markdown.
 
 
