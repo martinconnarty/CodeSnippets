@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
-
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSV Merger</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
 
 <style>
     #template {
@@ -13,18 +18,17 @@
     width: 350px;
     height: 500px;
     }
+    body {
+        text-align: center;
+    }
     </style>
 
 
-
 <body>
-
-<h2>Merger</h2>
-<p>Drop a CSV in here - ensure the Markdown template uses the same field names</p>
-
-<input type="file" id="myFile">
-
-<p>Please enter your template, use #{fieldname}# as placeholders</p>
+<h2>CSV Merger</h2>
+ Like a mail merge for plain text files such as Markdown.
+<hr/>
+<p>1 - Please enter your template, use #{fieldname}# as placeholders</p>
 
 <textarea id="template"># Title
 #{title}#
@@ -38,9 +42,14 @@
 #{code}#
 ```</textarea>
 <br/>
+<hr/>
+<p>2 - Drop a CSV in here - ensure the Markdown template uses the same field names</p>
+<br/>
+<input type="file" id="myFile">
+<hr/>
 
 </div>
-<h2>Output</h2>
+<h2>3 - Output</h2>
 <br/>
 <button type="button" onclick="previousitem()">Previous</button>
 <button type="button" onclick="nextitem()">Next</button>
@@ -68,20 +77,22 @@
         csvfields=csvfields[0].split(',')
         let allLines = csvfile.split(/\r\n|\n/);
         allLines=allLines.slice(0,-1)
-       
+        
         // Reading line by line
-        allLines.forEach((line) => {    
+        allLines.forEach((line) => {
             let outputfile=template
             lineitems=line.split(',')
             for (i=0;i<csvfields.length;i++){
                 replaceitem='#{'+csvfields[i]+'}#'
+
+                console.log(lineitems[i])
                 replacevalue=lineitems[i]
                 outputfile=outputfile.replaceAll(replaceitem,replacevalue)
+               
             }
             
             outputfiles.push(outputfile)
             mergeroutput.innerHTML=outputfiles[0]
-            console.log(outputfiles.type)
         });
       });
       
@@ -131,3 +142,13 @@
 }
   
   </script>
+<!-- Apologies, I don't want to do google analtics but Github.io doesn't let you see logs for non-repo traffic! -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2E723N9MD6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2E723N9MD6');
+</script>
