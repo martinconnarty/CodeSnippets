@@ -2,8 +2,12 @@
 
 # [martinconnarty.github.io](https://martinconnarty.github.io)
 
-Merger is designed to be a really simple way to help you build documents, such as helping with putting together markdown.
+Merger is designed to be a really simple way to help you build documents, such as helping with putting together markdown. It can work using a CSV or it can be a manual form based entry
+
 ## CSV Merge Usage
+
+[martinconnarty.github.io/merger.html
+](martinconnarty.github.io/merger.html)
 
 CSV Merge uses a CSV you upload in conjuction with a template you specify. If the fields in the template match up with the columns in the csv, then it will autopopulate the template with each row.
 Results are stored and can be browsed with the next/preview buttons.
@@ -11,9 +15,10 @@ Results are stored and can be browsed with the next/preview buttons.
 ## Manual Merge Usage
 
 
-In the template, put whatever you like in there. Where replacements are needed use
+[martinconnarty.github.io/index.html
+](martinconnarty.github.io/index.html)
 
-`#{fieldname}#` as the placeholders
+In the template, put your text based file which you want to make a form entry. Ensure all placeholders are: `#{fieldname}#`
 
 Press enter, and each fieldname becomes a form option
 
