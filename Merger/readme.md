@@ -11,6 +11,12 @@ Merger is designed to be a really simple way to help you build documents, such a
 CSV Merge uses a CSV you upload in conjuction with a template you specify. If the fields in the template match up with the columns in the csv, then it will autopopulate the template with each row.
 Results are stored and can be browsed with the next/preview buttons.
 
+### Guide
+
+1. Enter your template with placeholders(`#{fieldname}#`)
+2. Upload your CSV **note CSV fieldnames should align with the placeholders**
+3. The Output should populate. Press previous/next to move through the lines in your CSV. Press download each item as a text file. (you will need to rename)
+
 ## Manual Merge Usage
 
 
